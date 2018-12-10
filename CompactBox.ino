@@ -1,8 +1,9 @@
-#include "CompactBox.h"
-#include "ACS712.h"
+#include "bibliotecas/CompactBox.h"
+#include <ACS712.h>
 
 String IDdispositivo = "YRB16WOG";
 boolean statusDisp = false;
+int statusAtual = 0;
 
 ACS712 sensorCorrente(ACS712_30A, A0);
 int portaRele = 7;
@@ -21,7 +22,7 @@ void setup()
   Serial.println("Aguarde. Calibrando ACS712...");
   sensorCorrente.calibrate();
   Serial.println("Fim da calibração");
-  delay(500);
+  delay(1000);
   
   serialESPInitialize();
   
@@ -29,14 +30,17 @@ void setup()
 
 void loop(){
   long int time = millis();
-  //coleta dados
   float corrente = sensorCorrente.getCurrentAC(60);
-  
-  String status = sendData(IDdispositivo, corrente);
+ 
+  String mensagem = sendData(IDdispositivo, corrente);
+  int novoStatus = getStatus(mensagem);
+  if(novoStatus != statusAtual && novoStatus != -1){
+    statusDisp = !statusDisp;
+    digitalWrite(portaRele, statusDisp);
+    statusAtual = novoStatus;
+  }
+  Serial.println(String("Corrente = ") + corrente + " A");
   Serial.println(millis()-time);
   Serial.println("=============================================");
-  delay(5000);
-  while(1){
-    ;
-  }
+  delay(2000);
 }
