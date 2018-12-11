@@ -1,0 +1,23 @@
+Funcionabilidade:
+	* testa o comportamento lógico
+
+Interfaces:
+	* testar se o site roda em todos os browser
+	* pela falta de disponibilidade não dá pra testar com outros micro-	          controladores.
+
+Regressão:	
+	* testa se modificações no sistema não introduziriam falha - 	podemos falar que na nossa tabela de log ele registra a tensão, 	então caso desenvolvermos um outro embarcado 2.0 que tem sensor de 	voltagem, o espaço na tabela já esta feito.
+
+Segurança:
+	* Robustez contra falhas - podemos falar sobre os protocolos, os 	arquivos           estarem no servidor do google e tal (no site tem 	falha por causa do sql           inject)
+
+Carga e stress:
+	* Os limites do sistema (envio de dados a cada 5 segundos, limite de 	  amperagem, limite de tempo de requisição de conexão)
+
+· Testes Unitários: tem por objetivo verificar cada unidade que compõe o software, isoladamente, para determinar se cada uma delas realiza o que foi especificado. A unidade é definida como um componente de software que não pode ser dividido. Nesta fase as categorias de testes aplicáveis são: teste em estruturas internas, teste de funcionalidade, teste de segurança;
+
+· Testes de Integração: têm por objetivo encontrar falhas de integração entre as unidades, e não mais em testar as funcionalidades da mesma. Nesta fase as categorias de testes aplicáveis são: testes de interface, testes de dependências entre os componentes;
+
+· Testes de Sistema: consiste na realização de vários tipos de teste que visam determinar se os componentes de um sistema computacional (envolvendo outros componentes de software e/ou de hardware) se integram bem e realizam as funcionalidades que lhes foram especificadas. Nesta fase as categorias de testes aplicáveis são: testes funcionais e testes não funcionais (performance, instalação, recuperação e carga);
+
+· Testes de Aceitação: o objetivo dos testes de aceitação é determinar se o software funciona da maneira esperada, conforme consta na especificação dos requisitos. Dessa forma, critérios baseados na especificação devem ser empregados para determinar se requisitos (funcionais e não funcionais) foram devidamente satisfeitos.
